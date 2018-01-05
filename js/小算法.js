@@ -92,7 +92,7 @@ function unique(arr) {
 console.log(unique([1, 2, 3, 3, 4, 8, 8]));
 
 /**
- * 阶乘(递归)
+ * 阶乘(递归)--复杂度 O(n)
  * @param num  阶乘num
  * @returns {number}  返回结果
  */
@@ -106,6 +106,20 @@ function factorialize(num) {
 /*TODO 测试，如不需要可以删除*/
 console.log(factorialize(5));
 
+/**
+ * 尾递归--只保留一个调用记录，复杂度 O(1) 。
+ * @param num    阶乘num
+ * @param total  传入的时候必须是1，运行的时候代表每一次的结果
+ * @returns {*}  返回结果
+ */
+function factorializeEnd(num, total) {
+    if (num <= 1) {
+        return total;
+    }
+    return factorialize(num - 1, num * total);
+}
+/*TODO 测试，如不需要可以删除*/
+console.log(factorializeEnd(5, 1)); // 120
 
 /**
  * 斐波那契数列 0,1,2,3,5,8,13
