@@ -28,6 +28,7 @@ SingeInstance.prototype.sayHello = function () {
 };
 
 function getInstance(name) {
+    console.log(this);
     if (!this.instance) {
         this.instance = new SingeInstance(name);
     }
@@ -37,6 +38,24 @@ function getInstance(name) {
 var instance1 = getInstance('instance1');
 var instance2 = getInstance('instance2');
 console.log(instance1, instance2);
+
+/*ES6 单例模式
+* 静态方法不会被继承
+* 静态方法不用实例化（不用new）能够用直接调用（[类名/对象名].[静态方法名]）
+* */
+class mySingleton {
+    static getInstance() {
+        if (!mySingleton.instance) {
+            mySingleton.instance = new mySingleton();
+        }
+        return mySingleton.instance;
+    }
+    publicMethod() {
+        console.log("The public can see me!");
+    }
+}
+var cache = mySingleton.getInstance();
+
 
 /**
  *  观察者模式/发布订阅模式

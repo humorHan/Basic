@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            width: 300px;
+        }
+        .item{
+            height: 100px;
+            width: 100px;
+            border: 1px solid #666;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .item2{
+            order: 2;/*数字越大越靠前 默认是0*/
+            flex-grow: 1;/*放大倍数， 默认是0*/
+        }
+        .item5{
+            flex-shrink: 1; /*缩小倍数， 默认是1 空间不够就缩小*/
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item">1</div>
+        <div class="item item2">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item item5">5</div>
+    </div>
+<script src="../js/flex.js"></script>
+</body>
+</html>
