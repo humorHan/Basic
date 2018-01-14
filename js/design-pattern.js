@@ -60,16 +60,27 @@ var cache = mySingleton.getInstance();
 /**
  *  观察者模式/发布订阅模式
  */
-var Event = {
-    _events: {},
-    on: function (name, cb) {
-        if (!this._events[name]) {
-            this._events[name] = cb;
-        }
-    },
-    emit: function (name) {
-        this._events[name] && util.myTypeOf(this._events[name]) === '[object Function]' && this._events[name]();
-    }
+var observe = {
+  _events: {};
+
+  listener: function(name, cb){
+     if (!_events[name]){
+        this._events[name] = [];
+     }
+     this._events[name].push(cb);
+  },
+
+  /**
+    type: 类型
+    data: 带的数据(可选)
+   */
+  publish: function(type, data){
+     if(this._events[type] && this._events[type].length > 0){
+       this._events.forEach(function(cb){
+          cb(date);
+       });
+     }
+  }
 };
 
 /*TODO 测试，不需要的话可以删掉*/
