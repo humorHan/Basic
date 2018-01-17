@@ -60,11 +60,11 @@ var cache = mySingleton.getInstance();
 /**
  *  观察者模式/发布订阅模式
  */
-var observe = {
-  _events: {};
+var observer = {
+  _events: {},
 
   listener: function(name, cb){
-     if (!_events[name]){
+     if (!this._events[name]){
         this._events[name] = [];
      }
      this._events[name].push(cb);
@@ -76,16 +76,16 @@ var observe = {
    */
   publish: function(type, data){
      if(this._events[type] && this._events[type].length > 0){
-       this._events.forEach(function(cb){
-          cb(date);
+       this._events[type].forEach(function(cb){
+          cb(data);
        });
      }
   }
 };
 
 /*TODO 测试，不需要的话可以删掉*/
-Event.on('吃饭命令', function () {
+observer.listener('吃饭命令', function () {
     console.log('去吃饭咯');
 });
 
-Event.emit('吃饭命令');
+observer.publish('吃饭命令');
