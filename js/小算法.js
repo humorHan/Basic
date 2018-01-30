@@ -142,3 +142,38 @@ function getFibonacci(n) {
 
 /*TODO 测试，如不需要可以删除*/
 console.log(getFibonacci(10));
+
+/**
+ * 字符串新式判等
+ * @param a            字符串1
+ * @param b            字符串2
+ * @returns {boolean}  是否相等
+ */
+function equal(a, b){
+    //TODO 校验参数--这里只是列举了校验长度 其他还可能参数是否存在以及类型等
+    if (a.length !== b.length){return false;}
+    var obj1 = {}, obj2 = {};
+    for (var i = 0;i<a.length;i++) {
+        if (obj1[a[i]]){
+            obj1[a[i]]++;
+        } else {
+            obj1[a[i]] = 1;
+        }
+        if (obj2[b[i]]){
+            obj2[b[i]]++;
+        } else {
+            obj2[b[i]] = 1;
+        }
+    }
+
+    for (var j in obj1){
+        if (!obj2[j] || obj1[j] !== obj2[j]){
+            return false;
+        }
+    }
+    return true;
+}
+
+/*TODO 测试，如不需要可以删除*/
+console.log(equal('acccb', 'accbc'));
+console.log(equal('a ccb', 'ac bc'));
